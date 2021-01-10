@@ -13,7 +13,8 @@ namespace TELEGRAM_INVITER.Services
         {
             if(MessageBox.Show("Вы действительно хотите выйти?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //Разрущить браузер
+                BrowserViewer.IsClose = true;
+                BrowserViewer.Close();
                 Application.Exit();
             }
         }
