@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace TELEGRAM_INVITER.Services
 {
     public class ImportDataService
     {
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
         public async Task<List<String>> ImportData(Boolean IsLiteral = false)
         {
             try
@@ -51,6 +54,7 @@ namespace TELEGRAM_INVITER.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message, ex.StackTrace);
                 LogViewer.WriteLog("Ошибка при импорте данных. Дополнительные сведения смотреть в Logs");
                 throw new Exception(ex.Message);
             }

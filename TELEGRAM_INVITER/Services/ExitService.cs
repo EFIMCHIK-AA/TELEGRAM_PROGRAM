@@ -15,6 +15,10 @@ namespace TELEGRAM_INVITER.Services
             {
                 BrowserViewer.IsClose = true;
                 BrowserViewer.Close();
+
+                ConsoleViewer.IsClose = true;
+                ConsoleViewer.Close();
+
                 Application.Exit();
             }
         }

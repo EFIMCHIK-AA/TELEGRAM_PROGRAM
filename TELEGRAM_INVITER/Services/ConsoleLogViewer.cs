@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TELEGRAM_INVITER.Services
 {
-    public static class LogViewer
+    public static class ConsoleLogViewer
     {
         public static TextBox Textbox_logger_control;
 
@@ -15,18 +15,17 @@ namespace TELEGRAM_INVITER.Services
         {
             if (Textbox_logger_control != null)
             {
-                if(Textbox_logger_control.Lines.Count() > 0)
+                if (Textbox_logger_control.Lines.Count() > 0)
                 {
                     Textbox_logger_control.Invoke(new Action(() =>
                     {
                         Textbox_logger_control.AppendText(Environment.NewLine);
                     }));
-                    
                 }
 
                 Textbox_logger_control.Invoke(new Action(() =>
                 {
-                    Textbox_logger_control.AppendText($"[{DateTime.Now:HH:mm:sstt}] : {message}");
+                    Textbox_logger_control.AppendText($"[{DateTime.Now:HH:mm:sstt}] > {message}");
                 }));
             }
         }

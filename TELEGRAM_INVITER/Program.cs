@@ -19,6 +19,7 @@ namespace TELEGRAM_INVITER
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            AppManager.Settings = new SettingsService().Load();
             AppManager.MainForm = new ApplicationContext();
             AppManager.MainForm.MainForm = new Main();
 

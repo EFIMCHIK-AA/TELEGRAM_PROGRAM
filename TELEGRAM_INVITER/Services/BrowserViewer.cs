@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace TELEGRAM_INVITER.Services
 {
     public static class BrowserViewer
     {
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
         public static Browser browser_form;
 
         public static Boolean IsClose = false;
@@ -20,6 +23,12 @@ namespace TELEGRAM_INVITER.Services
             if (browser_form != null)
             {
                 browser_form.Show();
+
+                if(browser_form.WindowState == FormWindowState.Minimized)
+                {
+                    browser_form.WindowState = FormWindowState.Normal;
+                }
+
                 IsShow = true;
             }
         }
@@ -30,7 +39,6 @@ namespace TELEGRAM_INVITER.Services
             {
                 browser_form.Hide();
                 IsShow = false;
-
             }
         }
 
@@ -54,6 +62,7 @@ namespace TELEGRAM_INVITER.Services
             }
             else
             {
+                logger.Error("Объект брауезера не найден");
                 throw new Exception("Объект брауезера не найден");
             }
         }

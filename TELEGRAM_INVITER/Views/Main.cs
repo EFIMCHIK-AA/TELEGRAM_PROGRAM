@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,8 @@ namespace TELEGRAM_INVITER.Views
 {
     public partial class Main : Form
     {
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
         public Main()
         {
             InitializeComponent();
@@ -22,8 +25,18 @@ namespace TELEGRAM_INVITER.Views
 
         private void InitializeServices()
         {
-            LogViewer.Textbox_logger_control = Log_TB;
-            BrowserViewer.browser_form = new Browser();
+            try
+            {
+                ConsoleViewer.console_form = new Console();
+                ConsoleLogViewer.Textbox_logger_control = ConsoleViewer.console_form.Log_TB;
+
+                LogViewer.Textbox_logger_control = Log_TB;
+                BrowserViewer.browser_form = new Browser();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message, ex.StackTrace);
+            }
         }
 
         private void FillInviteList(DataGridView dataGridView, List<String> dataList)
@@ -41,7 +54,7 @@ namespace TELEGRAM_INVITER.Views
         {
             try
             {
-                LogViewer.WriteLog("Процедура импорта базы пользователей - Старт операции -");
+                LogViewer.WriteLog("Импорт базы пользователей - Старт операции -");
 
                 ImportUser_B.Enabled = false;
                 ImportUser_B.Text = "Загрузка...";
@@ -56,14 +69,15 @@ namespace TELEGRAM_INVITER.Views
 
                 Start_B.Enabled = true;
 
-                LogViewer.WriteLog("Процедура импорта базы пользователей - Завершено успешно -");
+                LogViewer.WriteLog("Импорт базы пользователей - Завершено успешно -");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ImportUser_B.Text = "Импортировать";
                 ImportUser_B.Enabled = true;
                 Start_B.Enabled = true;
-                LogViewer.WriteLog("Процедура импорта базы пользователей - Завершено аварийно -");
+                logger.Error(ex.Message, ex.StackTrace);
+                LogViewer.WriteLog("Импорт базы пользователей - Завершено аварийно -");
             }
         }
 
@@ -71,7 +85,7 @@ namespace TELEGRAM_INVITER.Views
         {
             try
             {
-                LogViewer.WriteLog("Процедура импорта базы групп - Старт операции -");
+                LogViewer.WriteLog("Импорт базы групп - Старт операции -");
 
                 ImportGroup_B.Enabled = false;
                 ImportGroup_B.Text = "Загрузка...";
@@ -86,16 +100,17 @@ namespace TELEGRAM_INVITER.Views
 
                 Start_B.Enabled = true;
 
-                LogViewer.WriteLog("Процедура импорта базы групп - Завершено успешно -");
+                LogViewer.WriteLog("Импорт базы групп - Завершено успешно -");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ImportGroup_B.Text = "Импортировать";
                 ImportGroup_B.Enabled = true;
 
                 Start_B.Enabled = true;
 
-                LogViewer.WriteLog("Процедура импорта базы групп - Завершено аварийно -");
+                logger.Error(ex.Message, ex.StackTrace);
+                LogViewer.WriteLog("Импорт базы групп - Завершено аварийно -");
             }
         }
 
@@ -103,15 +118,16 @@ namespace TELEGRAM_INVITER.Views
         {
             try
             {
-                LogViewer.WriteLog("Процедура выхода из приложения - Старт операции -");
+                LogViewer.WriteLog("Выход из приложения - Старт операции -");
 
                 new ExitService().ApplicationExit();
                 
-                LogViewer.WriteLog("Процедура выхода из приложения - Завершено успешно -");
+                LogViewer.WriteLog("Выход из приложения - Завершено успешно -");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                LogViewer.WriteLog("Процедура выхода из приложения - Завершено аварийно -");
+                logger.Error(ex.Message, ex.StackTrace);
+                LogViewer.WriteLog("Выход из приложения - Завершено аварийно -");
             }
         }
 
@@ -127,26 +143,27 @@ namespace TELEGRAM_INVITER.Views
             {
                 if (!BrowserViewer.IsShow)
                 {
-                    LogViewer.WriteLog("Отобразить браузер");
+                    LogViewer.WriteLog("Браузер - Отобразить -");
                     BrowserViewer.Show();
                 }
                 else
                 {
-                    LogViewer.WriteLog("Скрыть браузер");
+                    LogViewer.WriteLog("Браузер - Скрыть -");
                     BrowserViewer.Hide();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(ex.Message, ex.StackTrace);
                 LogViewer.WriteLog("Ошибка при попытке взаимодействия с окном браузера");
             }
         }
 
         private void StateControls(Boolean state)
         {
+            Settings_B.Enabled = state;
             ImportGroup_B.Enabled = state;
             ImportUser_B.Enabled = state;
-            Time_NUD.Enabled = state;
             DataGroups_DGV.ReadOnly = !state;
             DataGroups_DGV.AllowUserToDeleteRows = state;
             DataUsers_DGV.ReadOnly = !state;
@@ -175,7 +192,7 @@ namespace TELEGRAM_INVITER.Views
                 LogViewer.WriteLog("Инвайтер - Запуск -");
                 StateControls(false);
 
-                int Delay = Convert.ToInt32(Time_NUD.Value);
+                int Delay = AppManager.Settings.Time;
 
                 List<String> UsersNames = new List<string>();
                 for(int i = 0; i < DataUsers_DGV.Rows.Count; i++)
@@ -205,7 +222,7 @@ namespace TELEGRAM_INVITER.Views
                     }
                 }
 
-                await new Inviter().StartInvite(Groups, UsersNames, Delay);
+                await new Inviter().StartInvite(Groups, UsersNames, Delay, AppManager.Settings.UseGroupWait, AppManager.Settings.CountGroup, AppManager.Settings.TimeGroup);
 
                 StateControls(true);
                 Start_B.Text = "Начать";
@@ -217,29 +234,109 @@ namespace TELEGRAM_INVITER.Views
                 StateControls(true);
                 Start_B.Text = "Начать";
                 Start_B.Enabled = true;
+
+                logger.Error(ex.Message, ex.StackTrace);
+
                 LogViewer.WriteLog(ex.Message);
-                LogViewer.WriteLog("Инвайтер - Завершено пользователем -");
+                LogViewer.WriteLog("Инвайтер - Завершено -");
             }
             catch (Exception ex)
             {
                 StateControls(true);
                 Start_B.Text = "Начать";
                 Start_B.Enabled = true;
+
+                logger.Error(ex.Message, ex.StackTrace);
+
                 LogViewer.WriteLog(ex.Message);
-                LogViewer.WriteLog("Инвайтер - Завершено аварийно -");
+                LogViewer.WriteLog("Инвайтер - Завершено -");
             }
         }
 
         private async void Main_Shown(object sender, EventArgs e)
         {
             BrowserViewer.browser_form.chromeBrowser.Enabled = false;
+            ConsoleViewer.console_form.TopMost = true;
+            ConsoleViewer.Show();
             BrowserViewer.Show();
 
             await Task.Delay(2000);
 
             BrowserViewer.browser_form.chromeBrowser.Enabled = true;
+            ConsoleViewer.console_form.TopMost = false;
+            ConsoleViewer.Hide();
             BrowserViewer.Hide();
+        }
 
+        private void Console_B_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ConsoleViewer.IsShow)
+                {
+                    LogViewer.WriteLog("Консоль - Отобразить -");
+                    ConsoleViewer.Show();
+                }
+                else
+                {
+                    LogViewer.WriteLog("Консоль - Скрыть -");
+                    ConsoleViewer.Hide();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message, ex.StackTrace);
+
+                LogViewer.WriteLog("Ошибка при попытке взаимодействия с окном браузера");
+            }
+        }
+
+        private void Settings_B_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LogViewer.WriteLog("Настройки - Изменение параметров -");
+
+                Settings dialog = new Settings();
+
+                dialog.CoundUser_NUD.Value = AppManager.Settings.CountGroup;
+                dialog.TimeGroup_NUD.Value = AppManager.Settings.TimeGroup;
+                dialog.Time_NUD.Value = AppManager.Settings.Time;
+                dialog.UseGroupWait_CB.Checked = AppManager.Settings.UseGroupWait;
+
+                if (!AppManager.Settings.UseGroupWait)
+                {
+                    dialog.CoundUser_NUD.Enabled = false;
+                    dialog.TimeGroup_NUD.Enabled = false;
+                }
+
+                dialog.Owner = this;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    SettingsService settingsService = new SettingsService();
+
+                    Models.Settings settings = new Models.Settings
+                    {
+                        UseGroupWait = dialog.UseGroupWait_CB.Checked,
+                        CountGroup = Convert.ToInt32(dialog.CoundUser_NUD.Value),
+                        BrowserReload = false,
+                        TimeGroup = Convert.ToInt32(dialog.TimeGroup_NUD.Value),
+                        Time = Convert.ToInt32(dialog.Time_NUD.Value)
+                    };
+
+                    settingsService.Save(settings);
+                    AppManager.Settings = settings;
+                }
+
+                LogViewer.WriteLog("Настройки - Изменение параметров завершено -");
+            }
+            catch(Exception ex)
+            {
+                logger.Error(ex.Message, ex.StackTrace);
+
+                LogViewer.WriteLog("Настройки - Изменение параметров завершено -");
+            }
         }
     }
 }

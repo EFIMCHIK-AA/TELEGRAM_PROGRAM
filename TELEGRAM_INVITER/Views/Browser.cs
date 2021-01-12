@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,14 +27,45 @@ namespace TELEGRAM_INVITER.Views
         public void InitializeChromium()
         {
             CefSettings settings = new CefSettings();
-            settings.CachePath = Application.StartupPath + @"\Cache";
+            String path = Application.StartupPath + @"\Cache";
+
+            if(AppManager.Settings.BrowserReload)
+            {
+                if(Directory.Exists(path))
+                {
+                    Directory.Delete(path);
+                    new SettingsService().SetBrowserReload(false);
+                }
+            }
+
+            settings.CachePath = path;
 
             Cef.Initialize(settings);
 
             chromeBrowser = new ChromiumWebBrowser("https://web.telegram.org/#/login");
+            chromeBrowser.Margin = new Padding(0, 0, 0, 0);
+            chromeBrowser.TabIndex = 1;
 
-            this.Controls.Add(chromeBrowser);
+            Table_TLP.Controls.Add(chromeBrowser,0,1);
             chromeBrowser.Dock = DockStyle.Fill;
+
+            chromeBrowser.ConsoleMessage += ChromeBrowser_ConsoleMessage;
+            chromeBrowser.AddressChanged += ChromeBrowser_AddressChanged;
+        }
+
+        private void ChromeBrowser_AddressChanged(object sender, AddressChangedEventArgs e)
+        {
+            URL_TB.Invoke(new Action(() =>
+            {
+                URL_TB.Text = "Ссылка | " + e.Address;
+            }));
+        }
+
+        private void ChromeBrowser_ConsoleMessage(object sender, ConsoleMessageEventArgs e)
+        {
+            ConsoleLogViewer.WriteLog(e.Message);
+
+            Inviter.SetLogConsole(e.Message);
         }
 
         private void Browser_Load(object sender, EventArgs e)
@@ -47,11 +79,8 @@ namespace TELEGRAM_INVITER.Views
             {
                 e.Cancel = true;
                 BrowserViewer.Hide();
-                LogViewer.WriteLog("Скрыть браузер");
                 return;
             }
-
-            LogViewer.WriteLog("Закрываем браузер");
         }
     }
 }
