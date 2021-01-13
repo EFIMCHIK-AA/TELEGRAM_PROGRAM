@@ -92,7 +92,7 @@ namespace TELEGRAM_INVITER.Views
 
                 Start_B.Enabled = false;
 
-                List<string> groupsNames = await new ImportDataService().ImportData(true);
+                List<string> groupsNames = await new ImportDataService().ImportData(false);
                 await Task.Run(() => FillInviteList(DataGroups_DGV, groupsNames));
 
                 ImportGroup_B.Text = "Импортировать";
