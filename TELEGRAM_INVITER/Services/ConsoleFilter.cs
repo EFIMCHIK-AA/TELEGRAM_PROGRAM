@@ -53,6 +53,11 @@ namespace TELEGRAM_INVITER.Services
                 {
                     return ("Канал или пользователь не найден", true);
                 }
+
+                if (Message.Contains("403 INPUT_USER_DEACTIVATED"))
+                {
+                    return ("Пользователь удален или деактивирован", false);
+                }
             }
 
             return (null,false);

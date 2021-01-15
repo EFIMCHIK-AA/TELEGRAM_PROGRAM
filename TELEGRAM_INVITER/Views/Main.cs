@@ -56,6 +56,7 @@ namespace TELEGRAM_INVITER.Views
             {
                 LogViewer.WriteLog("Импорт базы пользователей - Старт операции -");
 
+                DataUsers_DGV.Rows.Clear();
                 ImportUser_B.Enabled = false;
                 ImportUser_B.Text = "Загрузка...";
 
@@ -87,6 +88,7 @@ namespace TELEGRAM_INVITER.Views
             {
                 LogViewer.WriteLog("Импорт базы групп - Старт операции -");
 
+                DataGroups_DGV.Rows.Clear();
                 ImportGroup_B.Enabled = false;
                 ImportGroup_B.Text = "Загрузка...";
 

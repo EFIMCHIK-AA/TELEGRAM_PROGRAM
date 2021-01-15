@@ -65,7 +65,7 @@ namespace TELEGRAM_SPAMER.Views
         {
             ConsoleLogViewer.WriteLog(e.Message);
 
-            //Inviter.SetLogConsole(e.Message);
+            Spamer.SetLogConsole(e.Message);
         }
 
         private void Browser_Load(object sender, EventArgs e)

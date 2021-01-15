@@ -9,7 +9,7 @@ namespace TELEGRAM_SPAMER.Services
 {
     public static class ConsoleViewer
     {
-        public static TELEGRAM_INVITER.Views.Console console_form;
+        public static Views.Console console_form;
 
         public static Boolean IsClose = false;
         public static Boolean IsShow = false;

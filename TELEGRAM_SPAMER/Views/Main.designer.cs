@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -51,10 +51,6 @@
             this.Exit_B = new System.Windows.Forms.Button();
             this.Start_B = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ID_Sticker_TB = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.UseSticker_CB = new System.Windows.Forms.CheckBox();
             this.MessageText_TB = new System.Windows.Forms.TextBox();
             this.CodeName_L = new System.Windows.Forms.Label();
@@ -72,8 +68,6 @@
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.SearchPanel_P.SuspendLayout();
             this.SuspendLayout();
@@ -249,14 +243,14 @@
             this.tableLayoutPanel4.Controls.Add(this.DataUsers_DGV, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(5, 101);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(5, 5, 0, 5);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(5, 5, 2, 5);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(389, 380);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(387, 380);
             this.tableLayoutPanel4.TabIndex = 11;
             // 
             // ImportUser_B
@@ -274,7 +268,7 @@
             this.ImportUser_B.Location = new System.Drawing.Point(2, 338);
             this.ImportUser_B.Margin = new System.Windows.Forms.Padding(0);
             this.ImportUser_B.Name = "ImportUser_B";
-            this.ImportUser_B.Size = new System.Drawing.Size(385, 40);
+            this.ImportUser_B.Size = new System.Drawing.Size(383, 40);
             this.ImportUser_B.TabIndex = 25;
             this.ImportUser_B.Text = "Импортировать";
             this.ImportUser_B.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -291,49 +285,49 @@
             this.Description_L.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
             this.Description_L.Location = new System.Drawing.Point(5, 2);
             this.Description_L.Name = "Description_L";
-            this.Description_L.Size = new System.Drawing.Size(379, 50);
+            this.Description_L.Size = new System.Drawing.Size(377, 50);
             this.Description_L.TabIndex = 1;
             this.Description_L.Text = "Пользователи";
             this.Description_L.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DataUsers_DGV
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 11F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataUsers_DGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataUsers_DGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DataUsers_DGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataUsers_DGV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DataUsers_DGV.BackgroundColor = System.Drawing.Color.White;
             this.DataUsers_DGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DataUsers_DGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
-            dataGridViewCellStyle5.NullValue = "Не задано";
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataUsers_DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
+            dataGridViewCellStyle2.NullValue = "Не задано";
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataUsers_DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataUsers_DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataUsers_DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UserNames});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 11F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataUsers_DGV.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 11F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataUsers_DGV.DefaultCellStyle = dataGridViewCellStyle3;
             this.DataUsers_DGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataUsers_DGV.Location = new System.Drawing.Point(3, 55);
             this.DataUsers_DGV.Margin = new System.Windows.Forms.Padding(1);
@@ -341,7 +335,7 @@
             this.DataUsers_DGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.DataUsers_DGV.RowHeadersVisible = false;
             this.DataUsers_DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataUsers_DGV.Size = new System.Drawing.Size(383, 280);
+            this.DataUsers_DGV.Size = new System.Drawing.Size(381, 280);
             this.DataUsers_DGV.TabIndex = 15;
             // 
             // UserNames
@@ -457,80 +451,26 @@
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel7, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.UseSticker_CB, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.MessageText_TB, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.CodeName_L, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.SaveMessageSettings_B, 0, 7);
+            this.tableLayoutPanel2.Controls.Add(this.SaveMessageSettings_B, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 0, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(399, 101);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(5, 5, 0, 5);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(396, 101);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 5, 5, 5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 8;
+            this.tableLayoutPanel2.RowCount = 6;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(390, 380);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(388, 380);
             this.tableLayoutPanel2.TabIndex = 10;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(1, 241);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(388, 35);
-            this.tableLayoutPanel7.TabIndex = 30;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.ID_Sticker_TB);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(114, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(274, 35);
-            this.panel1.TabIndex = 26;
-            // 
-            // ID_Sticker_TB
-            // 
-            this.ID_Sticker_TB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ID_Sticker_TB.Font = new System.Drawing.Font("Verdana", 11F);
-            this.ID_Sticker_TB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
-            this.ID_Sticker_TB.Location = new System.Drawing.Point(2, 9);
-            this.ID_Sticker_TB.Name = "ID_Sticker_TB";
-            this.ID_Sticker_TB.Size = new System.Drawing.Size(265, 18);
-            this.ID_Sticker_TB.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("Verdana", 11F);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(28)))), ((int)(((byte)(61)))));
-            this.label5.Location = new System.Drawing.Point(5, 5);
-            this.label5.Margin = new System.Windows.Forms.Padding(5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 25);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "ID Стикера |";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // UseSticker_CB
             // 
@@ -539,13 +479,14 @@
             this.UseSticker_CB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UseSticker_CB.Font = new System.Drawing.Font("Verdana", 11F);
             this.UseSticker_CB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
-            this.UseSticker_CB.Location = new System.Drawing.Point(6, 174);
+            this.UseSticker_CB.Location = new System.Drawing.Point(6, 262);
             this.UseSticker_CB.Margin = new System.Windows.Forms.Padding(5);
             this.UseSticker_CB.Name = "UseSticker_CB";
-            this.UseSticker_CB.Size = new System.Drawing.Size(378, 25);
+            this.UseSticker_CB.Size = new System.Drawing.Size(376, 25);
             this.UseSticker_CB.TabIndex = 28;
             this.UseSticker_CB.Text = "Использовать стикер";
             this.UseSticker_CB.UseVisualStyleBackColor = false;
+            this.UseSticker_CB.CheckedChanged += new System.EventHandler(this.UseSticker_CB_CheckedChanged);
             // 
             // MessageText_TB
             // 
@@ -558,8 +499,7 @@
             this.MessageText_TB.Margin = new System.Windows.Forms.Padding(5);
             this.MessageText_TB.Multiline = true;
             this.MessageText_TB.Name = "MessageText_TB";
-            this.MessageText_TB.ReadOnly = true;
-            this.MessageText_TB.Size = new System.Drawing.Size(378, 70);
+            this.MessageText_TB.Size = new System.Drawing.Size(376, 158);
             this.MessageText_TB.TabIndex = 25;
             // 
             // CodeName_L
@@ -571,7 +511,7 @@
             this.CodeName_L.Location = new System.Drawing.Point(6, 57);
             this.CodeName_L.Margin = new System.Windows.Forms.Padding(5);
             this.CodeName_L.Name = "CodeName_L";
-            this.CodeName_L.Size = new System.Drawing.Size(378, 25);
+            this.CodeName_L.Size = new System.Drawing.Size(376, 25);
             this.CodeName_L.TabIndex = 24;
             this.CodeName_L.Text = "Сообщение (оставить пустым если не нужно)";
             this.CodeName_L.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -591,7 +531,7 @@
             this.SaveMessageSettings_B.Location = new System.Drawing.Point(1, 339);
             this.SaveMessageSettings_B.Margin = new System.Windows.Forms.Padding(0);
             this.SaveMessageSettings_B.Name = "SaveMessageSettings_B";
-            this.SaveMessageSettings_B.Size = new System.Drawing.Size(388, 40);
+            this.SaveMessageSettings_B.Size = new System.Drawing.Size(386, 40);
             this.SaveMessageSettings_B.TabIndex = 23;
             this.SaveMessageSettings_B.Text = "Сохранить";
             this.SaveMessageSettings_B.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -607,7 +547,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
             this.label3.Location = new System.Drawing.Point(4, 1);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(382, 50);
+            this.label3.Size = new System.Drawing.Size(380, 50);
             this.label3.TabIndex = 0;
             this.label3.Text = "Отправка";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -620,13 +560,13 @@
             this.tableLayoutPanel6.Controls.Add(this.SearchPanel_P, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(1, 205);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(1, 298);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0, 5, 5, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(388, 35);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(381, 35);
             this.tableLayoutPanel6.TabIndex = 29;
             // 
             // SearchPanel_P
@@ -634,21 +574,27 @@
             this.SearchPanel_P.BackColor = System.Drawing.Color.White;
             this.SearchPanel_P.Controls.Add(this.IDEmoji_TB);
             this.SearchPanel_P.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SearchPanel_P.Location = new System.Drawing.Point(113, 0);
-            this.SearchPanel_P.Margin = new System.Windows.Forms.Padding(0);
+            this.SearchPanel_P.Location = new System.Drawing.Point(96, 2);
+            this.SearchPanel_P.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.SearchPanel_P.Name = "SearchPanel_P";
-            this.SearchPanel_P.Size = new System.Drawing.Size(275, 35);
+            this.SearchPanel_P.Size = new System.Drawing.Size(285, 31);
             this.SearchPanel_P.TabIndex = 26;
+            this.SearchPanel_P.Paint += new System.Windows.Forms.PaintEventHandler(this.SearchPanel_P_Paint);
             // 
             // IDEmoji_TB
             // 
+            this.IDEmoji_TB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.IDEmoji_TB.BackColor = System.Drawing.Color.White;
             this.IDEmoji_TB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.IDEmoji_TB.Font = new System.Drawing.Font("Verdana", 11F);
             this.IDEmoji_TB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
-            this.IDEmoji_TB.Location = new System.Drawing.Point(2, 9);
+            this.IDEmoji_TB.Location = new System.Drawing.Point(8, 6);
             this.IDEmoji_TB.Name = "IDEmoji_TB";
-            this.IDEmoji_TB.Size = new System.Drawing.Size(264, 18);
+            this.IDEmoji_TB.Size = new System.Drawing.Size(269, 18);
             this.IDEmoji_TB.TabIndex = 0;
+            this.IDEmoji_TB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -657,11 +603,11 @@
             this.label4.Font = new System.Drawing.Font("Verdana", 11F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(28)))), ((int)(((byte)(61)))));
             this.label4.Location = new System.Drawing.Point(5, 5);
-            this.label4.Margin = new System.Windows.Forms.Padding(5);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 5, 0, 5);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 25);
+            this.label4.Size = new System.Drawing.Size(91, 25);
             this.label4.TabIndex = 25;
-            this.label4.Text = "ID Эмоджи |";
+            this.label4.Text = "ID Эмоджи";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Main
@@ -689,10 +635,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.tableLayoutPanel7.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.SearchPanel_P.ResumeLayout(false);
@@ -727,10 +669,6 @@
         public System.Windows.Forms.TextBox MessageText_TB;
         private System.Windows.Forms.Label CodeName_L;
         public System.Windows.Forms.CheckBox UseSticker_CB;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.TextBox ID_Sticker_TB;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Panel SearchPanel_P;
         private System.Windows.Forms.TextBox IDEmoji_TB;

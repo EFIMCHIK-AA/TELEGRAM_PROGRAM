@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TELEGRAM_SPAMER.Exceptions;
+using TELEGRAM_SPAMER.Models;
 using TELEGRAM_SPAMER.Services;
 
 namespace TELEGRAM_SPAMER.Views
@@ -55,6 +57,7 @@ namespace TELEGRAM_SPAMER.Views
             {
                 LogViewer.WriteLog("Импорт базы пользователей - Старт операции -");
 
+                DataUsers_DGV.Rows.Clear();
                 ImportUser_B.Enabled = false;
                 ImportUser_B.Text = "Загрузка...";
 
@@ -99,12 +102,14 @@ namespace TELEGRAM_SPAMER.Views
 
         private void Main_Load(object sender, EventArgs e)
         {
-            MessageSettingsService settingsService = new MessageSettingsService();
+            MessageSettings settingsService = new MessageSettingsService().Load();
 
             MessageText_TB.Text = settingsService.MeesageString;
             IDEmoji_TB.Text = settingsService.IDEmoji;
-            ID_Sticker_TB.Text = settingsService.IDSticker;
             UseSticker_CB.Checked = settingsService.UseSticker;
+
+            MessageText_TB.Enabled = !settingsService.UseSticker;
+            IDEmoji_TB.Enabled = settingsService.UseSticker;
         }
 
 
@@ -134,84 +139,77 @@ namespace TELEGRAM_SPAMER.Views
 
         private async void Start_B_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if(Inviter.IsWork)
-            //    {
-            //        LogViewer.WriteLog("Инвайтер - Остановка работы -");
-            //        Start_B.Text = "Остановка...";
-            //        Start_B.Enabled = false;
-            //        Inviter.IsWork = false;
-            //        return;
-            //    }
+            try
+            {
+                if (Spamer.IsWork)
+                {
+                    LogViewer.WriteLog("Спамер - Остановка работы -");
+                    Start_B.Text = "Остановка...";
+                    Start_B.Enabled = false;
+                    Spamer.IsWork = false;
+                    return;
+                }
 
-            //    LogViewer.Reset();
+                LogViewer.Reset();
 
-            //    Inviter.IsWork = true;
-            //    Start_B.Text = "Остановить";
+                Spamer.IsWork = true;
+                Start_B.Text = "Остановить";
 
-            //    LogViewer.WriteLog("Инвайтер - Запуск -");
-            //    StateControls(false);
+                LogViewer.WriteLog("Спамер - Запуск -");
+                StateControls(false);
 
-            //    int Delay = AppManager.Settings.Time;
+                int Delay = AppManager.Settings.Time;
 
-            //    List<String> UsersNames = new List<string>();
-            //    for(int i = 0; i < DataUsers_DGV.Rows.Count; i++)
-            //    {
-            //        if(DataUsers_DGV["UserNames", i].Value != null)
-            //        {
-            //            String value = DataUsers_DGV["UserNames", i].Value.ToString().Trim();
+                List<String> UsersNames = new List<string>();
+                for (int i = 0; i < DataUsers_DGV.Rows.Count; i++)
+                {
+                    if (DataUsers_DGV["UserNames", i].Value != null)
+                    {
+                        String value = DataUsers_DGV["UserNames", i].Value.ToString().Trim();
 
-            //            if (!String.IsNullOrWhiteSpace(value))
-            //            {
-            //                UsersNames.Add(value);
-            //            }
-            //        }         
-            //    }
+                        if (!String.IsNullOrWhiteSpace(value))
+                        {
+                            UsersNames.Add(value);
+                        }
+                    }
+                }
 
-            //    List<String> Groups = new List<string>();
-            //    for (int i = 0; i < DataGroups_DGV.Rows.Count; i++)
-            //    {
-            //        if (DataGroups_DGV["NameGroup", i].Value != null)
-            //        {
-            //            String value = DataGroups_DGV["NameGroup", i].Value.ToString().Trim();
+                if(!UseSticker_CB.Checked)
+                {
+                    await new Spamer().StartSpamMessage(UsersNames, Delay, MessageText_TB.Text.Trim(),false);
+                }
+                else
+                {
+                    await new Spamer().StartSpamMessage(UsersNames, Delay, IDEmoji_TB.Text.Trim(), true);
+                }
 
-            //            if (!String.IsNullOrWhiteSpace(value))
-            //            {
-            //                Groups.Add(value);
-            //            }
-            //        }
-            //    }
+                StateControls(true);
+                Start_B.Text = "Начать";
+                Start_B.Enabled = true;
+                LogViewer.WriteLog("Спамер - Завершено успешно -");
+            }
+            catch (StopWorkException ex)
+            {
+                StateControls(true);
+                Start_B.Text = "Начать";
+                Start_B.Enabled = true;
 
-            //    await new Inviter().StartInvite(Groups, UsersNames, Delay, AppManager.Settings.UseGroupWait, AppManager.Settings.CountGroup, AppManager.Settings.TimeGroup);
+                logger.Error(ex.Message, ex.StackTrace);
 
-            //    StateControls(true);
-            //    Start_B.Text = "Начать";
-            //    Start_B.Enabled = true;
-            //    LogViewer.WriteLog("Инвайтер - Завершено успешно -");
-            //}
-            //catch (StopWorkException ex)
-            //{
-            //    StateControls(true);
-            //    Start_B.Text = "Начать";
-            //    Start_B.Enabled = true;
+                LogViewer.WriteLog(ex.Message);
+                LogViewer.WriteLog("Спамер - Завершено -");
+            }
+            catch (Exception ex)
+            {
+                StateControls(true);
+                Start_B.Text = "Начать";
+                Start_B.Enabled = true;
 
-            //    logger.Error(ex.Message, ex.StackTrace);
+                logger.Error(ex.Message, ex.StackTrace);
 
-            //    LogViewer.WriteLog(ex.Message);
-            //    LogViewer.WriteLog("Инвайтер - Завершено -");
-            //}
-            //catch (Exception ex)
-            //{
-            //    StateControls(true);
-            //    Start_B.Text = "Начать";
-            //    Start_B.Enabled = true;
-
-            //    logger.Error(ex.Message, ex.StackTrace);
-
-            //    LogViewer.WriteLog(ex.Message);
-            //    LogViewer.WriteLog("Инвайтер - Завершено -");
-            //}
+                LogViewer.WriteLog(ex.Message);
+                LogViewer.WriteLog("Спамер - Завершено -");
+            }
         }
 
         private async void Main_Shown(object sender, EventArgs e)
@@ -301,7 +299,6 @@ namespace TELEGRAM_SPAMER.Views
                     MeesageString = MessageText_TB.Text.Trim(),
                     UseSticker = UseSticker_CB.Checked,
                     IDEmoji = IDEmoji_TB.Text.Trim(),
-                    IDSticker = ID_Sticker_TB.Text.Trim()
                 };
 
                 settingsService.Save(settings);
@@ -324,9 +321,22 @@ namespace TELEGRAM_SPAMER.Views
             DataUsers_DGV.AllowUserToDeleteRows = state;
             MessageText_TB.ReadOnly = !state;
             IDEmoji_TB.ReadOnly = !state;
-            ID_Sticker_TB.ReadOnly = !state;
             UseSticker_CB.Enabled = state;
             BrowserViewer.browser_form.chromeBrowser.Enabled = state;
+        }
+
+        private void UseSticker_CB_CheckedChanged(object sender, EventArgs e)
+        {
+            MessageText_TB.Enabled = !UseSticker_CB.Checked;
+            IDEmoji_TB.Enabled = UseSticker_CB.Checked;
+        }
+
+        private Color BorderColor = Color.FromArgb(160, 160, 160);
+
+        private void SearchPanel_P_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, SearchPanel_P.ClientRectangle, BorderColor, ButtonBorderStyle.Solid);
+
         }
     }
 }

@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button2 = new System.Windows.Forms.Button();
             this.Time_NUD = new System.Windows.Forms.NumericUpDown();
             this.NameForm_L = new System.Windows.Forms.Label();
             this.CodeName_L = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Cancel_B = new System.Windows.Forms.Button();
             this.OK_B = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Time_NUD)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -68,6 +68,29 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(459, 227);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.SetColumnSpan(this.button2, 3);
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(152)))), ((int)(((byte)(217)))));
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Verdana", 10F);
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(92)))), ((int)(((byte)(161)))));
+            this.button2.Location = new System.Drawing.Point(5, 85);
+            this.button2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(449, 36);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "Очистить кэш браузера и перезапустить приложение";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Time_NUD
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.Time_NUD, 2);
@@ -87,7 +110,7 @@
             0,
             0});
             this.Time_NUD.Minimum = new decimal(new int[] {
-            10000,
+            3000,
             0,
             0,
             0});
@@ -96,7 +119,7 @@
             this.Time_NUD.TabIndex = 26;
             this.Time_NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Time_NUD.Value = new decimal(new int[] {
-            20000,
+            3000,
             0,
             0,
             0});
@@ -192,29 +215,6 @@
             this.OK_B.Text = "Подтвердить";
             this.OK_B.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.OK_B.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.SetColumnSpan(this.button2, 3);
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(152)))), ((int)(((byte)(217)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Verdana", 10F);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(92)))), ((int)(((byte)(161)))));
-            this.button2.Location = new System.Drawing.Point(5, 85);
-            this.button2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(449, 36);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Очистить кэш браузера и перезапустить приложение";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Settings
             // 

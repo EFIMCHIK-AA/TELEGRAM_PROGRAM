@@ -1,8 +1,12 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TELEGRAM_SPAMER.Models;
 
 namespace TELEGRAM_SPAMER.Services
 {
@@ -26,12 +30,11 @@ namespace TELEGRAM_SPAMER.Services
             configuration.AppSettings.Settings[MeesageStringKey].Value = messageSettings.MeesageString;
             configuration.AppSettings.Settings[UseStickerKey].Value = messageSettings.UseSticker.ToString();
             configuration.AppSettings.Settings[IDEmojiKey].Value = messageSettings.IDEmoji.ToString();
-            configuration.AppSettings.Settings[IDStickerKey].Value = messageSettings.IDSticker.ToString();
             configuration.Save();
             ConfigurationManager.RefreshSection("appSettings");
         }
 
-        public Settings Load()
+        public MessageSettings Load()
         {
             MessageSettings messageSettings = new MessageSettings();
 
@@ -73,25 +76,6 @@ namespace TELEGRAM_SPAMER.Services
 
             messageSettings.IDEmoji = IDEmoji;
 
-            String IDSticker;
-
-            try
-            {
-                IDSticker = configuration.AppSettings.Settings[IDStickerKey].Value;
-
-                if (String.IsNullOrWhiteSpace(IDSticker))
-                {
-                    throw new Exception("Значение ID Стикера отсутвует или не определено");
-                }
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex.Message, ex.StackTrace);
-                IDSticker = String.Empty;
-            }
-
-            messageSettings.IDSticker = IDSticker;
-
             Boolean UseSticker;
 
             try
@@ -106,7 +90,7 @@ namespace TELEGRAM_SPAMER.Services
 
             messageSettings.UseSticker = UseSticker;
 
-            return setting;
+            return messageSettings;
         }
     }
 }

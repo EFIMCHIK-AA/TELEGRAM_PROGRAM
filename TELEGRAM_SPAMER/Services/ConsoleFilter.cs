@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace TELEGRAM_SPAMER.Services
 
         public (String, Boolean) GetResult(String Message)
         {
-            if (Message.Contains("{TL_Inviter} - "))
+            if (Message.Contains("{TL_Spamer} - "))
             {
                 String[] TempMessage = Message.Split('.');
 
@@ -33,24 +34,29 @@ namespace TELEGRAM_SPAMER.Services
             }
             else
             {
-                if (Message.Contains("CODE#403 USER_PRIVACY_RESTRICTED"))
+                if (Message.Contains("403 USER_PRIVACY_RESTRICTED"))
                 {
                     return ("Отключена возможность приглашения", false);
                 }
 
-                if (Message.Contains("CODE#400 PEER_FLOOD"))
+                if (Message.Contains("400 PEER_FLOOD"))
                 {
                     return ("Telegram API обнаружил \"Спам\". Запрос заблокирован", true);
                 }
 
-                if (Message.Contains("CODE#400 USER_NOT_MUTUAL_CONTACT"))
+                if (Message.Contains("400 USER_NOT_MUTUAL_CONTACT"))
                 {
                     return ("Разрешено приглашать только контактам", false);
                 }
-
-                if (Message.Contains("CODE#400 USERNAME_NOT_OCCUPIED"))
+                
+                if (Message.Contains("400 USERNAME_NOT_OCCUPIED"))
                 {
-                    return ("Канал или пользователь не найден", true);
+                    return ("Пользователь не найден", false);
+                }
+
+                if (Message.Contains("403 INPUT_USER_DEACTIVATED"))
+                {
+                    return ("Пользователь удален или деактивирован", false);
                 }
             }
 
